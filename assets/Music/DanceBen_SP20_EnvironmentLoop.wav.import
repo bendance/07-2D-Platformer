@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/DanceBen_SP20_EnvironmentLoop.wav-de6edfe55754329db75999dbc55d97fb.sample"
+
+[deps]
+
+source_file="res://assets/Music/DanceBen_SP20_EnvironmentLoop.wav"
+dest_files=[ "res://.import/DanceBen_SP20_EnvironmentLoop.wav-de6edfe55754329db75999dbc55d97fb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

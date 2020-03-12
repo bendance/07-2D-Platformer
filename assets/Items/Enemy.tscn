@@ -1,0 +1,44 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/Animations/EnemyRoll/Roll3.png" type="Texture" id=1]
+[ext_resource path="res://assets/Animations/EnemyRoll/Roll1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Animations/EnemyRoll/Roll4.png" type="Texture" id=3]
+[ext_resource path="res://assets/Animations/EnemyRoll/Roll5.png" type="Texture" id=4]
+[ext_resource path="res://assets/Animations/EnemyRoll/Roll6.png" type="Texture" id=5]
+[ext_resource path="res://assets/Animations/EnemyRoll/Roll2.png" type="Texture" id=6]
+[ext_resource path="res://assets/Scripts/Enemy.gd" type="Script" id=7]
+[ext_resource path="res://assets/Scripts/EnemyDamage.gd" type="Script" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "roll",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 8.31693
+
+[node name="Enemy" type="KinematicBody2D"]
+script = ExtResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "roll"
+frame = 3
+playing = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( -8.3766, -0.190376 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="hitbox" type="Area2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
