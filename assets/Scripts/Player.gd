@@ -28,5 +28,5 @@ func _physics_process(delta):
 	motion = move_and_slide(motion, UP)
 
 func _on_hitbox_body_entered(body: KinematicBody2D):
-	if body.name == "Enemy.tcsn":
+	if body.name == "Enemy":
 		get_tree().change_scene("res://assets/Levels/LoseScreen.tscn")
