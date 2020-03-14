@@ -6,7 +6,6 @@ var direction = 1
 export var speed = 100
 export var gravity = 10
 export var jump_force = -400
-onready var sprite = get_node("sprite")
 
 
 func _physics_process(delta):
@@ -28,7 +27,6 @@ func _physics_process(delta):
 		direction = direction * -1
 		$RayCast2D.position.x *= -1
 		
-func on_Enemy_body_entered(body):
-	for body in $hitbox.get_overlapping_bodies():
-		if body.name == "Player":
+func _on_hitbox_body_entered(body):
+	if body.name == "Player":
 			get_tree().change_scene("res://assets/Levels/LoseScreen.tscn")

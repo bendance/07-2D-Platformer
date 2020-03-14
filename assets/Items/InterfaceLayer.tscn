@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/Scripts/UI.gd" type="Script" id=1]
+
+[node name="InterfaceLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveButton" type="Button" parent="Control"]
+margin_left = 43.6227
+margin_top = 564.791
+margin_right = 84.6227
+margin_bottom = 584.791
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadButton" type="Button" parent="Control"]
+margin_left = 938.709
+margin_top = 564.791
+margin_right = 980.709
+margin_bottom = 584.791
+text = "Load"
+
+[node name="Points" type="Label" parent="Control"]
+margin_left = 43.6227
+margin_top = 23.0802
+margin_right = 105.623
+margin_bottom = 37.0802
+text = "Score: "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

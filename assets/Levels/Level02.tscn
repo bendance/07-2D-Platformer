@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/Backgrounds/backgroundlevel2.png" type="Texture" id=1]
 [ext_resource path="res://assets/Animations/Walk/tile000.png" type="Texture" id=2]
@@ -15,17 +15,20 @@
 [ext_resource path="res://assets/Scripts/Portal2.gd" type="Script" id=13]
 [ext_resource path="res://assets/Items/Death_Barrier.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/Items/Enemy.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/Scripts/GameManager.gd" type="Script" id=16]
+[ext_resource path="res://assets/Scripts/UI.gd" type="Script" id=17]
+[ext_resource path="res://assets/Items/Coin.png" type="Texture" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "left",
+"name": "right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "right",
+"name": "left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -43,7 +46,49 @@ extents = Vector2( 218.289, 10 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 144.026, 10 )
 
+[sub_resource type="CircleShape2D" id=5]
+radius = 8.72293
+
 [node name="Level02" type="Node2D"]
+script = ExtResource( 16 )
+
+[node name="InterfaceLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="InterfaceLayer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveButton" type="Button" parent="InterfaceLayer/Control"]
+margin_left = 43.6227
+margin_top = 564.791
+margin_right = 84.6227
+margin_bottom = 584.791
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadButton" type="Button" parent="InterfaceLayer/Control"]
+margin_left = 938.709
+margin_top = 564.791
+margin_right = 980.709
+margin_bottom = 584.791
+text = "Load"
+
+[node name="Points" type="Label" parent="InterfaceLayer/Control"]
+margin_left = 92.2937
+margin_top = 33.3294
+margin_right = 154.294
+margin_bottom = 47.3294
+text = "Score: "
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -54,9 +99,9 @@ anchor_top = -0.00221141
 anchor_right = -0.000401974
 anchor_bottom = -0.00221141
 margin_left = 0.411652
-margin_top = 0.326843
+margin_top = -0.767441
 margin_right = 1024.41
-margin_bottom = 601.327
+margin_bottom = 600.233
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {
@@ -131,3 +176,14 @@ scale = Vector2( 2, 2 )
 [node name="Enemy3" parent="." instance=ExtResource( 15 )]
 position = Vector2( 1390.26, 494.747 )
 scale = Vector2( 2, 2 )
+
+[node name="Coin" type="Area2D" parent="."]
+position = Vector2( 1357.35, 386.05 )
+
+[node name="coinimage" type="Sprite" parent="Coin"]
+texture = ExtResource( 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+shape = SubResource( 5 )
+[connection signal="body_entered" from="Coin" to="Coin" method="_on_CoinSprite_body_entered"]
+[connection signal="body_entered" from="Coin" to="." method="_on_Coin_body_entered"]

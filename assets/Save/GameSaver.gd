@@ -3,7 +3,7 @@
 # dict so saves don't rely on the nodes' path or their source file
 extends Node
 
-const SaveGame = preload('res://src/main/save/SaveGame.gd')
+const SaveGame = preload('res://assets/Save/SaveGame.gd')
 # TODO: Use project setting to save to res://debug vs user://
 var SAVE_FOLDER : String = "res://debug/save"
 var SAVE_NAME_TEMPLATE : String = "save_%03d.tres"
